@@ -19,7 +19,7 @@ const getDate = () => {
     return dateTime;
 }
 
-function send() {
+const send = () => {
     let userText = prompt();
     let message = `-${userName}: ${userText} [${getDate()}]`;
     connect.send(message);
