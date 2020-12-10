@@ -128,6 +128,7 @@
                 </div>
             </div>
         </div>
-        <script src="../js/chat.js"></script>
+        <a onclick="send();">Send Message</a>
+        <script src="{{asset('js/chat.js')}}"></script>
     </body>
 </html>
