@@ -9,13 +9,17 @@ connect.onopen = () => {
 }
 
 connect.onmessage = (e) => {
+    let messageBlockHtml = `<div class="d-flex justify-content-start mb-4"><div class="msg_cotainer">${e.data} <span class="msg_time">${getDate()}</span> </div><div class="img_cont_msg"><img src="" class="rounded-circle user_img_msg"></div></div>`;
+    let messageBlock = document.getElementById('message-block');
+
+    messageBlock.insertAdjacentHTML('beforeend', messageBlockHtml);
     console.log(`${e.data}`);
 }
 
 const getDate = () => {
     let today = new Date();
-    let date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
-    let time = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
+    let date = `${today.getMonth() + 1}-${today.getDate()}`;
+    let time = `${today.getHours()}:${today.getMinutes()}`;
     let dateTime = `${date} ${time}`;
 
     return dateTime;
@@ -24,7 +28,7 @@ const getDate = () => {
 const send = () => {
     let userText = prompt();
     let message = `-${userName}: ${userText} [${getDate()}]`;
-    let messageBlockHtml = `<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">${userText} <span class="msg_time_send">8:55 AM, Today</span> </div><div class="img_cont_msg"><img src="" class="rounded-circle user_img_msg"></div></div>`;
+    let messageBlockHtml = `<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">${userText} <span class="msg_time_send">${getDate()}</span> </div><div class="img_cont_msg"><img src="" class="rounded-circle user_img_msg"></div></div>`;
     let messageBlock = document.getElementById('message-block');
 
     messageBlock.insertAdjacentHTML('beforeend', messageBlockHtml);
