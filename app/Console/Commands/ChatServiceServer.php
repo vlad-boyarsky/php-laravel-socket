@@ -2,7 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\Services\SocketChat\SocketChatService;
 use Illuminate\Console\Command;
+use Ratchet\Http\HttpServer;
+use Ratchet\Server\IoServer;
+use Ratchet\WebSocket\WsServer;
 
 class ChatServiceServer extends Command
 {
@@ -37,6 +41,13 @@ class ChatServiceServer extends Command
      */
     public function handle()
     {
-        return 0;
+        $this->info('Chat service server...');
+
+        $server = IoServer::factory(
+            new HttpServer(
+                new WsServer(
+                    new SocketChatService())), 8888);
+
+        $server->run();
     }
 }

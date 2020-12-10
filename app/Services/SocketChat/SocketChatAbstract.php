@@ -6,7 +6,7 @@ namespace App\Services\SocketChat;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 
- abstract class SocketChatAbstract implements MessageComponentInterface
+abstract class SocketChatAbstract implements MessageComponentInterface
 {
 
     function onOpen(ConnectionInterface $conn)
