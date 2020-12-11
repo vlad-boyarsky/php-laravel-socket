@@ -5,6 +5,7 @@ let userName = "User" + Math.floor(Math.random() * Math.floor(13));
 let messageBlock = document.getElementById('message-block');
 let messageCounter = document.getElementById('message-counter');
 let userNameGuest = document.getElementById('user-name-guest');
+let userActive = document.getElementById('user-active');
 
 document.getElementById('user-name').innerHTML = userName;
 
@@ -12,9 +13,28 @@ connect.onmessage = (e) => {
     let dataObject = JSON.parse(e.data);
     let messageBlockHtml = `<div class="d-flex justify-content-start mb-4"><div class="img_cont_msg"><span class="rounded-circle user_img_msg">😇</span></div><div class="msg_cotainer">${dataObject['user_text']} <span class="msg_time">${getDate()}</span></div></div>`;
 
-    userNameGuest.innerHTML = dataObject['user_name_guest'];
-    messageCounter.innerHTML = dataObject['message_counter'];
-    messageBlock.insertAdjacentHTML('beforeend', messageBlockHtml);
+    if (dataObject['user_text']) {
+        userNameGuest.innerHTML = dataObject['user_name_guest'];
+        messageCounter.innerHTML = dataObject['message_counter'];
+        messageBlock.insertAdjacentHTML('beforeend', messageBlockHtml);
+
+        if (userActive.classList.contains('offline')) {
+            userActive.classList.remove('offline');
+        }
+    }
+
+    if (dataObject['user_offline']) {
+        userActive.classList.add(dataObject['user_offline']);
+    }
+}
+
+const closeConnect = () => {
+
+    let userStatus = {
+        'user_offline': 'offline',
+    };
+
+    connect.send(JSON.stringify(userStatus));
 }
 
 const getDate = () => {
@@ -32,15 +52,15 @@ const send = () => {
 
     messageCount += 1;
 
-    let mainInfo = {
+    let userInfo = {
         'message_counter': messageCount,
         'user_text': userText,
         'user_name_guest': userName,
     };
 
-    if(userText){
+    if (userText) {
         messageBlock.insertAdjacentHTML('beforeend', messageBlockHtml);
-        connect.send(JSON.stringify(mainInfo));
+        connect.send(JSON.stringify(userInfo));
     }
 
     document.getElementById('user-text').value = '';

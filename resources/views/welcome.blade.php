@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{asset('/css/style.css')}}">
 </head>
 
-<body>
+<body onunload="closeConnect()" onbeforeunload="closeConnect()">
 <div class="container-fluid h-100">
     <div class="row justify-content-center h-100">
         <div class="col-md-4 col-xl-3 chat"><div class="card mb-sm-3 mb-md-0 contacts_card">
@@ -35,7 +35,7 @@
                     <div class="d-flex bd-highlight">
                         <div class="img_cont">
                             <span class="rounded-circle user_img">🤑</span>
-                            <span class="online_icon"></span>
+                            <span id="user-active" class="online_icon offline"></span>
                         </div>
                         <div class="user_info">
                             <span>New Chat with <b id="user-name-guest">😴</b></span>
