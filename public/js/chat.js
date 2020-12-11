@@ -27,8 +27,9 @@ connect.onmessage = (e) => {
     }
 
     if (dataObject['user_offline'] && userNameGuest.innerText !== '') {
+        let messageDisconnectHTML = `<p class="disconnect">User was disconnected ${getDate()}</p>`;
         userActive.classList.add(dataObject['user_offline']);
-        messageBlock.insertAdjacentHTML('beforeend', `<p class="disconnect">User was disconnected</p>`);
+        messageBlock.insertAdjacentHTML('beforeend', messageDisconnectHTML);
     }
 }
 
