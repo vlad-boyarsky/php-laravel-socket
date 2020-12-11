@@ -6,6 +6,7 @@ let messageBlock = document.getElementById('message-block');
 let messageCounter = document.getElementById('message-counter');
 let userNameGuest = document.getElementById('user-name-guest');
 let userActive = document.getElementById('user-active');
+let waitUser = document.getElementById('wait-user');
 
 document.getElementById('user-name').innerHTML = userName;
 
@@ -14,8 +15,10 @@ connect.onmessage = (e) => {
     let messageBlockHtml = `<div class="d-flex justify-content-start mb-4"><div class="img_cont_msg"><span class="rounded-circle user_img_msg">😇</span></div><div class="msg_cotainer">${dataObject['user_text']} <span class="msg_time">${getDate()}</span></div></div>`;
 
     if (dataObject['user_text']) {
+
         userNameGuest.innerHTML = dataObject['user_name_guest'];
         messageCounter.innerHTML = dataObject['message_counter'];
+        waitUser.innerHTML = '';
         messageBlock.insertAdjacentHTML('beforeend', messageBlockHtml);
 
         if (userActive.classList.contains('offline')) {
@@ -23,8 +26,9 @@ connect.onmessage = (e) => {
         }
     }
 
-    if (dataObject['user_offline']) {
+    if (dataObject['user_offline'] && userNameGuest.innerText !== '') {
         userActive.classList.add(dataObject['user_offline']);
+        messageBlock.insertAdjacentHTML('beforeend', `<p class="disconnect">User was disconnected</p>`);
     }
 }
 

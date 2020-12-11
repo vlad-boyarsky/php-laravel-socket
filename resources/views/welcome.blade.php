@@ -38,7 +38,7 @@
                             <span id="user-active" class="online_icon offline"></span>
                         </div>
                         <div class="user_info">
-                            <span>New Chat with <b id="user-name-guest">😴</b></span>
+                            <span>New Chat with <b id="user-name-guest"></b><span id="wait-user">😴</span></span>
                             <p><b id="user-name-guest">User</b> Send <b id="message-counter">0</b> Message(-s)</p>
                         </div>
                     </div>

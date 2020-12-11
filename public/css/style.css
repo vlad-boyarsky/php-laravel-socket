@@ -147,6 +147,11 @@ body, html {
     background-color: #c23616 !important;
 }
 
+.disconnect{
+    color: #ed7575;
+    text-align: center;
+}
+
 .user_info {
     margin-top: auto;
     margin-bottom: auto;
