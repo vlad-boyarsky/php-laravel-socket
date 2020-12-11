@@ -46,7 +46,7 @@
                             <span class="online_icon"></span>
                         </div>
                         <div class="user_info">
-                            <span>New Chat</span>
+                            <span>New Chat with <b id="user-name-guest">😴</b></span>
                             <p><b id="user-name-guest">User</b> Send <b id="message-counter">0</b> Message(-s)</p>
                         </div>
                     </div>
