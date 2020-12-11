@@ -114,10 +114,11 @@ body, html {
 }
 
 .user_img_msg {
-    height: 40px;
-    width: 40px;
+    height: 70px;
+    width: 70px;
     border: 1.5px solid #f5f6fa;
-
+    font-size: 25px;
+    padding: 10px;
 }
 
 .img_cont {
@@ -127,8 +128,8 @@ body, html {
 }
 
 .img_cont_msg {
-    height: 40px;
-    width: 40px;
+    height: 70px;
+    width: 70px;
 }
 
 .online_icon {
@@ -180,7 +181,7 @@ body, html {
     margin-left: 10px;
     border-radius: 25px;
     background-color: #82ccdd;
-    padding: 10px;
+    padding: 10px 20px 10px 20px;
     position: relative;
 }
 

@@ -1,19 +1,18 @@
 const connect = new WebSocket('ws://127.0.0.1:8888');
 
-let userName = prompt('Your name:');
-
+let messageCount = 0;
+let userName = "User" + Math.floor(Math.random() * Math.floor(13));
 document.getElementById('user_name').innerHTML = userName;
 
-connect.onopen = () => {
-    console.log(`New user ${userName} connected`);
-}
-
 connect.onmessage = (e) => {
-    let messageBlockHtml = `<div class="d-flex justify-content-start mb-4"><div class="msg_cotainer">${e.data} <span class="msg_time">${getDate()}</span> </div><div class="img_cont_msg"><img src="" class="rounded-circle user_img_msg"></div></div>`;
+    let dataObject = JSON.parse(e.data);
+    let messageBlockHtml = `<div class="d-flex justify-content-start mb-4"><div class="img_cont_msg"><span class="rounded-circle user_img_msg">😇</span></div><div class="msg_cotainer">${dataObject['user_text']} <span class="msg_time">${getDate()}</span></div></div>`;
     let messageBlock = document.getElementById('message-block');
+    let messageCounter = document.getElementById('message-counter');
 
+    messageCounter.innerHTML = (dataObject['message_counter']+=1).toString();
     messageBlock.insertAdjacentHTML('beforeend', messageBlockHtml);
-    console.log(`${e.data}`);
+    console.log(dataObject['message_counter']);
 }
 
 const getDate = () => {
@@ -27,12 +26,15 @@ const getDate = () => {
 
 const send = () => {
     let userText = prompt();
-    let message = `-${userName}: ${userText} [${getDate()}]`;
-    let messageBlockHtml = `<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">${userText} <span class="msg_time_send">${getDate()}</span> </div><div class="img_cont_msg"><img src="" class="rounded-circle user_img_msg"></div></div>`;
+    let messageBlockHtml = `<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">${userText} <span class="msg_time_send">${getDate()}</span> </div><div class="img_cont_msg"><span class="rounded-circle user_img_msg">😈</span></div></div>`;
     let messageBlock = document.getElementById('message-block');
 
+    let mainInfo = {
+        'message_counter': messageCount,
+        'user_text': userText,
+    };
+    console.log(messageCount);
     messageBlock.insertAdjacentHTML('beforeend', messageBlockHtml);
 
-    connect.send(message);
-    console.log(message);
+    connect.send(JSON.stringify(mainInfo));
 }
