@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Simple Chat</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <link rel="stylesheet" href="{{asset('/css/style.css')}}">
 </head>
@@ -56,10 +56,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="input-group">
-                        <div class="input-group-append">
-                            <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
-                        </div>
-                        <textarea class="form-control type_msg" id="user-text" placeholder="Type your message..."></textarea>
+                        <textarea class="form-control type_msg" id="user-text" placeholder="Message..."></textarea>
                         <div class="input-group-append">
                             <span class="input-group-text send_btn" onclick="send();"><i class="fas fa-location-arrow"></i></span>
                         </div>
