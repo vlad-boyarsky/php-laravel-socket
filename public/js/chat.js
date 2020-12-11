@@ -27,9 +27,9 @@ const getDate = () => {
 }
 
 const send = () => {
-    let messageBlockHtml = `<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send"> <span class="msg_time_send">${getDate()}</span> </div><div class="img_cont_msg"><span class="rounded-circle user_img_msg">😈</span></div></div>`;
     let userText = document.getElementById('user-text').value;
-
+    let messageBlockHtml = `<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">${userText} <span class="msg_time_send">${getDate()}</span> </div><div class="img_cont_msg"><span class="rounded-circle user_img_msg">😈</span></div></div>`;
+    
     messageCount += 1;
 
     let mainInfo = {
