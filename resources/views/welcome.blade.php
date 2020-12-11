@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Simple Chat</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="card-body contacts_body">
-                    <ui class="contacts">
+                    <ul class="contacts">
                         <li class="active">
                             <div class="d-flex bd-highlight">
                                 <div class="img_cont">
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                         </li>
-                    </ui>
+                    </ul>
                 </div>
                 <div class="card-footer"></div>
             </div></div>
