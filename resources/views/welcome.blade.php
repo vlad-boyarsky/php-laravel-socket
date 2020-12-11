@@ -31,7 +31,7 @@
                                     <span class="online_icon"></span>
                                 </div>
                                 <div class="user_info">
-                                    <span id="user_name"></span>
+                                    <span id="user-name"></span>
                                     <p>is online</p>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="user_info">
                             <span>New Chat</span>
-                            <p><b id="message-counter"></b> Message(-s)</p>
+                            <p><b id="user-name-guest">User</b> Send <b id="message-counter">0</b> Message(-s)</p>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                         <div class="input-group-append">
                             <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
                         </div>
-                        <textarea name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
+                        <textarea class="form-control type_msg" id="user-text" placeholder="Type your message..."></textarea>
                         <div class="input-group-append">
                             <span class="input-group-text send_btn" onclick="send();"><i class="fas fa-location-arrow"></i></span>
                         </div>
